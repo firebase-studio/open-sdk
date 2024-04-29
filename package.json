@@ -1,0 +1,27 @@
+{
+  "name": "open-in-idx",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "SDK and assets for opening workspaces in Project IDX",
+  "source": "src/index.ts",
+  "main": "dist/index.cjs",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "microbundle --no-sourcemap ./src/index.ts",
+    "dev": "npm run build -- -w"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.20.2",
+    "microbundle": "^0.15.1",
+    "typescript": ">=5.2.2"
+  },
+  "keywords": [
+    "idx",
+    "project-idx"
+  ],
+  "author": "Roman Nurik <romannurik@google.com>",
+  "license": "Apache-2.0"
+}

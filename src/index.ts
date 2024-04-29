@@ -1,0 +1,1 @@
+export { newAdhocWorkspace } from './adhoc-workspaces';
