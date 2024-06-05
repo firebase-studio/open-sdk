@@ -8,6 +8,15 @@ export interface AdhocWorkspaceContent {
    * files aren't supported.
    */
   files: Record<string, string>;
+  /**
+   * Optional workspace configuration.
+   */
+  settings?: {
+    /**
+     * The starting point to build on.
+     */
+    baselineEnvironment?: 'flutter' | undefined;
+  }
 }
 
 export interface AdhocWorkspaceOptions {
@@ -33,7 +42,7 @@ export function newAdhocWorkspace(content: AdhocWorkspaceContent, options?: Adho
   document.body.removeChild(form);
 }
 
-function createAdhocWorkspaceForm({ files }: AdhocWorkspaceContent) {
+function createAdhocWorkspaceForm({ files, settings }: AdhocWorkspaceContent) {
   const inputs: HTMLInputElement[] = [];
   const addInput = (name, value, defaultValue = '') => {
     inputs.push(createHiddenInput(name, typeof value === 'string' ? value : defaultValue));
@@ -42,6 +51,12 @@ function createAdhocWorkspaceForm({ files }: AdhocWorkspaceContent) {
   Object.entries(files).forEach(([path, contents]) => {
     addInput(`project[files][${encodeURIComponent(path)}]`, contents);
   });
+
+  if (settings) {
+    addInput(`project[settings]`, JSON.stringify({
+      baselineEnvironment: settings?.baselineEnvironment
+    }));
+  }
 
   const form = document.createElement('form');
   form.method = 'post';

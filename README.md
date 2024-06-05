@@ -1,6 +1,6 @@
 # Open in IDX
 
-A JS library and button assets for opening workspaces in [Project IDX](https://idx.dev).
+A JS library for opening workspaces in [Project IDX](https://idx.dev).
 
 Example:
 

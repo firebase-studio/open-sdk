@@ -1,8 +1,8 @@
 {
   "name": "open-in-idx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
-  "description": "SDK and assets for opening workspaces in Project IDX",
+  "description": "SDK for opening workspaces in Project IDX",
   "source": "src/index.ts",
   "main": "dist/index.cjs",
   "umd:main": "dist/index.umd.js",
