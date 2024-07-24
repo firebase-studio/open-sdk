@@ -2,12 +2,14 @@
 
 const DEFAULT_BASE_URL = 'https://idx.google.com/run.api';
 
+const DEFAULT_BASE_URL = 'https://idx.google.com/run.api';
+
 export interface AdhocWorkspaceContent {
   /**
-   * A map of relative file paths (e.g. `src/foo.html`) to their contents (strings). Binary
-   * files aren't supported.
+   * A map of relative file paths (e.g. `src/foo.html`) to their contents.
+   * String for text files, Uint8Array for binary files.
    */
-  files: Record<string, string>;
+  files: Record<string, string | Uint8Array>;
   /**
    * Optional workspace configuration.
    */
@@ -44,8 +46,16 @@ export function newAdhocWorkspace(content: AdhocWorkspaceContent, options?: Adho
 
 function createAdhocWorkspaceForm({ files, settings }: AdhocWorkspaceContent) {
   const inputs: HTMLInputElement[] = [];
-  const addInput = (name, value, defaultValue = '') => {
-    inputs.push(createHiddenInput(name, typeof value === 'string' ? value : defaultValue));
+  const addInput = (name: string, value: string | Uint8Array, defaultValue = '') => {
+    let inputValue: string;
+    if (typeof value === 'string') {
+      inputValue = value;
+    } else if (value instanceof Uint8Array) {
+      inputValue = btoa(String.fromCharCode.apply(null, value));
+    } else {
+      inputValue = defaultValue;
+    }
+    inputs.push(createHiddenInput(name, inputValue));
   };
 
   Object.entries(files).forEach(([path, contents]) => {
