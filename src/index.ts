@@ -1,2 +1,2 @@
 export { newAdhocWorkspace } from './adhoc-workspaces';
-export { makeButtonImageUrl } from './button-image-url';
+export { buttonImageUrl } from './button-image-url';

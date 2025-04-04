@@ -1,13 +1,32 @@
-# Open in IDX
+# Open in Firebase Studio SDK
 
-A JS library for opening workspaces in [Project IDX](https://idx.dev).
+A JS library for opening workspaces in [Firebase Studio](https://firebase.google.com/studio).
 
 Example:
 
-<img src="https://cdn.idx.dev/btn/open_dark_32@2x.png" alt="Open in IDX button" height="32">
+<img src="https://cdn.firebasestudio.dev/btn/open_dark_32@2x.png" alt="Open in Firebase Studio button" height="32">
 
 ## Installation
 
 ```shell
-npm install open-in-idx
+npm install @firebase-studio/open-sdk
+```
+
+## Usage
+
+```ts
+import * as FirebaseStudio from '@firebase-studio/open-sdk';
+
+// ... setup DOM elements ...
+
+img.src = FirebaseStudio.buttonImageUrl();
+
+button.onclick = () => {
+  FirebaseStudio.newAdhocWorkspace({
+    files: {
+      'index.html': '<h1>hello world</h1>',
+      '.idx/dev.nix': '...',
+    }
+  });
+};
 ```
