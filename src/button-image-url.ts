@@ -1,5 +1,5 @@
 export type ButtonLabel = 'open' | 'try' | 'export' | 'continue';
-export type ButtonColor = 'dark' | 'light' | 'purple';
+export type ButtonColor = 'dark' | 'light' | 'blue' | 'bright';
 export type ButtonSize = 20 | 32;
 export type ButtonImageFormat = 'svg' | 'png';
 
@@ -11,16 +11,16 @@ export interface ButtonImageConfig {
 }
 
 /**
- * Get the CDN URL for a given "Open in IDX" button configuration.
+ * Get the CDN URL for a given "Open in Firebase Studio" button configuration.
  */
-export function makeButtonImageUrl({
+export function buttonImageUrl({
   label = 'open',
   color = 'dark',
   size = 32,
   imageFormat = 'svg'
 }: ButtonImageConfig = {}) {
   return [
-    'https://cdn.idx.dev/btn/',
+    'https://cdn.firebasestudio.dev/btn/',
     label, '_',
     color, '_',
     `${size}${imageFormat === 'png' ? '@2x' : ''}.${imageFormat}`

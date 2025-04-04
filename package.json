@@ -1,8 +1,16 @@
 {
-  "name": "open-in-idx",
-  "version": "0.1.1",
+  "name": "@firebase-studio/open-sdk",
+  "version": "0.1.0",
   "type": "module",
-  "description": "SDK for opening workspaces in Project IDX",
+  "description": "A TypeScript SDK for opening workspaces in Firebase Studio from a browser.",
+  "keywords": [
+    "firebase",
+    "firebase-studio",
+    "idx",
+    "project-idx"
+  ],
+  "author": "Google LLC",
+  "license": "Apache-2.0",
   "source": "src/index.ts",
   "main": "dist/index.cjs",
   "umd:main": "dist/index.umd.js",
@@ -17,11 +25,5 @@
     "esbuild": "^0.20.2",
     "microbundle": "^0.15.1",
     "typescript": ">=5.2.2"
-  },
-  "keywords": [
-    "idx",
-    "project-idx"
-  ],
-  "author": "Roman Nurik <romannurik@google.com>",
-  "license": "Apache-2.0"
+  }
 }

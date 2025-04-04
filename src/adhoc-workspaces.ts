@@ -1,6 +1,6 @@
 // Fork of https://github.com/stackblitz/sdk (MIT license)
 
-const DEFAULT_BASE_URL = 'https://idx.google.com/run.api';
+const DEFAULT_BASE_URL = 'https://studio.firebase.google.com/run.api';
 
 export interface AdhocWorkspaceContent {
   /**
@@ -25,13 +25,14 @@ export interface AdhocWorkspaceOptions {
    */
   url?: string;
   /**
-   * Open IDX in a new browser tab/window.
+   * Open Firebase Studio in a new browser tab/window.
    */
   newWindow?: boolean;
 }
 
 /**
- * Creates a new ad-hoc Project IDX workspace from the given file contents.
+ * Creates a new ad-hoc Firebase Studio workspace from the given file contents.
+ * This is only supported in a browser environment.
  */
 export function newAdhocWorkspace(content: AdhocWorkspaceContent, options?: AdhocWorkspaceOptions) {
   const form = createAdhocWorkspaceForm(content);
