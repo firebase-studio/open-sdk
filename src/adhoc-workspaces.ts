@@ -31,8 +31,10 @@ export interface AdhocWorkspaceOptions {
 }
 
 /**
- * Creates a new ad-hoc Firebase Studio workspace from the given file contents.
- * This is only supported in a browser environment.
+ * Creates a new ad-hoc Firebase Studio workspace from the given set of project files. For best
+ * effect, include a `.idx/dev.nix` file to customize the environment for the project.
+ *
+ * _NOTE: This is only supported in a browser environment._
  */
 export function newAdhocWorkspace(content: AdhocWorkspaceContent, options?: AdhocWorkspaceOptions) {
   const form = createAdhocWorkspaceForm(content);

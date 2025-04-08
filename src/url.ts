@@ -1,0 +1,66 @@
+export type OpenDestination = ImportGitOpenDestination | NamedTemplateOpenDestination | CustomTemplateOpenDestination;
+
+export interface ImportGitOpenDestination {
+  type: 'git';
+  /**
+   * The Git repository to import into a new workspace. This is essentially a `git clone` in a
+   * new workspace.
+   */
+  repoUrl: string;
+}
+
+export interface NamedTemplateOpenDestination {
+  type: 'named-template';
+  /**
+   * The named template to create a new workspace from, for example `gemini`.
+   */
+  templateId: string;
+}
+
+export interface CustomTemplateOpenDestination {
+  type: 'custom-template';
+  /**
+   * The public Git repository URL for a custom template (a repo or subfolder with a
+   * `idx-template.json` file).
+   */
+  templateRepoUrl: string;
+}
+
+// TODO: support adhoc workspaces somehow? they're not simple links though.
+
+const BASE_URL = 'https://studio.firebase.google.com';
+
+/**
+ * Returns the URL for a given "Open in Firebase Studio" destination.
+ */
+export function getOpenUrl(destination: OpenDestination, baseUrl: string = BASE_URL) {
+  baseUrl = (baseUrl || '').replace(/\/$/, '');
+  switch (destination.type) {
+    case 'git':
+      return [baseUrl, '/import?url=',
+        encodeURIComponent(normalizeGitUrl(destination.repoUrl))
+      ].join('');
+
+    case 'named-template':
+      return [baseUrl, '/new/',
+        encodeURIComponent(destination.templateId.trim())
+      ].join('');
+
+    case 'custom-template':
+      return [baseUrl, '/new?template=',
+        encodeURIComponent(normalizeGitUrl(destination.templateRepoUrl))
+      ].join('');
+
+    default:
+      throw new Error('Unknown destination type');
+  }
+}
+
+function normalizeGitUrl(url: string): string {
+  url = url.trim();
+  if (!url) return url;
+  if (!url.match(/^https?:\/\//)) {
+    url = `https://${url}`;
+  }
+  return url;
+}
