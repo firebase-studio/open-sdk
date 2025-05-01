@@ -11,19 +11,15 @@
   ],
   "author": "Google LLC",
   "license": "Apache-2.0",
-  "source": "src/index.ts",
   "main": "dist/index.cjs",
-  "umd:main": "dist/index.umd.js",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "microbundle --no-sourcemap ./src/index.ts",
+    "build": "tsdown",
     "dev": "npm run build -- -w"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "esbuild": "^0.20.2",
-    "microbundle": "^0.15.1",
+    "tsdown": "^0.9.3",
     "typescript": ">=5.2.2"
   }
 }

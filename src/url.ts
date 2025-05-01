@@ -1,4 +1,8 @@
-export type OpenDestination = ImportGitOpenDestination | NamedTemplateOpenDestination | CustomTemplateOpenDestination;
+export type OpenDestination =
+  | ImportGitOpenDestination
+  | NamedTemplateOpenDestination
+  | CustomTemplateOpenDestination
+  | PrototypePromptOpenDestination;
 
 export interface ImportGitOpenDestination {
   type: 'git';
@@ -26,6 +30,14 @@ export interface CustomTemplateOpenDestination {
   templateRepoUrl: string;
 }
 
+export interface PrototypePromptOpenDestination {
+  type: 'prototype-prompt';
+  /**
+   * The natural language prompt for a prototype to build.
+   */
+  prompt: string;
+}
+
 // TODO: support adhoc workspaces somehow? they're not simple links though.
 
 const BASE_URL = 'https://studio.firebase.google.com';
@@ -49,6 +61,11 @@ export function getOpenUrl(destination: OpenDestination, baseUrl: string = BASE_
     case 'custom-template':
       return [baseUrl, '/new?template=',
         encodeURIComponent(normalizeGitUrl(destination.templateRepoUrl))
+      ].join('');
+
+    case 'prototype-prompt':
+      return [baseUrl, '/?prototypePrompt=',
+        encodeURIComponent(destination.prompt)
       ].join('');
 
     default:
