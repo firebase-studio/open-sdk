@@ -1,6 +1,6 @@
 {
   "name": "@firebase-studio/open-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "A TypeScript SDK for opening workspaces in Firebase Studio from a browser.",
   "keywords": [

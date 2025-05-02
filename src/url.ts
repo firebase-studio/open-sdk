@@ -69,7 +69,7 @@ export function getOpenUrl(destination: OpenDestination, baseUrl: string = BASE_
       ].join('');
 
     default:
-      throw new Error('Unknown destination type');
+      throw new Error(`Unknown destination type: ${(destination as any).type}`);
   }
 }
 
