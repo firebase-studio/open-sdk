@@ -30,7 +30,7 @@ export interface ButtonHtmlConfig extends Omit<ButtonImageConfig, 'color'> {
   color?: ButtonHtmlColor;
 }
 
-const LABELS: Record<ButtonImageConfig['label'], string> = {
+const LABELS: Record<Exclude<ButtonImageConfig['label'], undefined>, string> = {
   continue: 'Continue in Firebase Studio',
   export: 'Export to Firebase Studio',
   open: 'Open in Firebase Studio',
@@ -74,7 +74,7 @@ export function getButtonHtml(config: ButtonHtmlConfig) {
       srcset="${getButtonImageUrl({ ...config, color: reverse ? 'dark' : 'light' })}">
     <img
       height="${size}"
-      alt="${LABELS[label]}"
+      ${label ? `alt="${LABELS[label]}"` : ''}
       src="${getButtonImageUrl({ ...config, color: 'blue' })}">
   </picture>
     `.trim();
@@ -82,7 +82,7 @@ export function getButtonHtml(config: ButtonHtmlConfig) {
     inner = `
   <img
     height="${size}"
-    alt="${LABELS[label]}"
+    ${label ? `alt="${LABELS[label]}"` : ''}
     src="${getButtonImageUrl({ color, label, size, imageFormat })}">
 `.trim();
   }

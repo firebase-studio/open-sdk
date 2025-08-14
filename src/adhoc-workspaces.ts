@@ -47,7 +47,7 @@ export function newAdhocWorkspace(content: AdhocWorkspaceContent, options?: Adho
 
 function createAdhocWorkspaceForm({ files, settings }: AdhocWorkspaceContent) {
   const inputs: HTMLInputElement[] = [];
-  const addInput = (name, value, defaultValue = '') => {
+  const addInput = (name: string, value: string, defaultValue = '') => {
     inputs.push(createHiddenInput(name, typeof value === 'string' ? value : defaultValue));
   };
 
