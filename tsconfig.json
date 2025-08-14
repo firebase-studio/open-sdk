@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "stripInternal": true,
     "sourceMap": false,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true
   },
   "include": ["./src/**/*"]
 }

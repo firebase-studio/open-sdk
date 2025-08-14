@@ -30,7 +30,7 @@ export interface ButtonHtmlConfig extends Omit<ButtonImageConfig, 'color'> {
   color?: ButtonHtmlColor;
 }
 
-const LABELS: Record<ButtonImageConfig['label'], string> = {
+const LABELS: Record<Exclude<ButtonImageConfig['label'], undefined>, string> = {
   continue: 'Continue in Firebase Studio',
   export: 'Export to Firebase Studio',
   open: 'Open in Firebase Studio',
@@ -59,7 +59,7 @@ export function getButtonImageUrl({
  * a target link.
  */
 export function getButtonHtml(config: ButtonHtmlConfig) {
-  const { destination, color, label, size, imageFormat } = config;
+  const { destination, color, label = 'open', size, imageFormat } = config;
   let inner = '';
 
   if (color === 'dynamic' || color === 'dynamic-reverse') {
