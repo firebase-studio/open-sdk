@@ -15,7 +15,7 @@ export interface AdhocWorkspaceContent {
     /**
      * The starting point to build on.
      */
-    baselineEnvironment?: 'flutter' | undefined;
+    baselineEnvironment?: 'flutter' | 'stitch' | undefined;
   }
 }
 
