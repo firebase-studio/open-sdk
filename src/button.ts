@@ -59,7 +59,7 @@ export function getButtonImageUrl({
  * a target link.
  */
 export function getButtonHtml(config: ButtonHtmlConfig) {
-  const { destination, color, label, size, imageFormat } = config;
+  const { destination, color, label = 'open', size, imageFormat } = config;
   let inner = '';
 
   if (color === 'dynamic' || color === 'dynamic-reverse') {
@@ -74,7 +74,7 @@ export function getButtonHtml(config: ButtonHtmlConfig) {
       srcset="${getButtonImageUrl({ ...config, color: reverse ? 'dark' : 'light' })}">
     <img
       height="${size}"
-      ${label ? `alt="${LABELS[label]}"` : ''}
+      alt="${LABELS[label]}"
       src="${getButtonImageUrl({ ...config, color: 'blue' })}">
   </picture>
     `.trim();
@@ -82,7 +82,7 @@ export function getButtonHtml(config: ButtonHtmlConfig) {
     inner = `
   <img
     height="${size}"
-    ${label ? `alt="${LABELS[label]}"` : ''}
+    alt="${LABELS[label]}"
     src="${getButtonImageUrl({ color, label, size, imageFormat })}">
 `.trim();
   }
