@@ -16,6 +16,10 @@ export interface AdhocWorkspaceContent {
      * The starting point to build on.
      */
     baselineEnvironment?: 'flutter' | 'stitch' | undefined;
+    /**
+     * The source of the request.
+     */
+    referrer?: string;
   }
 }
 
@@ -57,7 +61,8 @@ function createAdhocWorkspaceForm({ files, settings }: AdhocWorkspaceContent) {
 
   if (settings) {
     addInput(`project[settings]`, JSON.stringify({
-      baselineEnvironment: settings?.baselineEnvironment
+      baselineEnvironment: settings?.baselineEnvironment,
+      referrer: settings?.referrer,
     }));
   }
 
