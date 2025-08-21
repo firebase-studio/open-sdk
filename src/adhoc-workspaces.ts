@@ -2,6 +2,8 @@
 
 const DEFAULT_BASE_URL = 'https://studio.firebase.google.com/run.api';
 
+export type BaselineEnvironment = 'flutter' | 'stitch' | 'html' | 'react' | 'angular' | 'python';
+
 export interface AdhocWorkspaceContent {
   /**
    * A map of relative file paths (e.g. `src/foo.html`) to their contents (strings). Binary
@@ -15,7 +17,7 @@ export interface AdhocWorkspaceContent {
     /**
      * The starting point to build on.
      */
-    baselineEnvironment?: 'flutter' | 'stitch' | undefined;
+    baselineEnvironment?: BaselineEnvironment | undefined;
     /**
      * The source of the request.
      */
