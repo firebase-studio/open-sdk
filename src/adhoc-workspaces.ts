@@ -63,8 +63,8 @@ function createAdhocWorkspaceForm({ files, settings }: AdhocWorkspaceContent) {
 
   if (settings) {
     addInput(`project[settings]`, JSON.stringify({
-      baselineEnvironment: settings?.baselineEnvironment,
-      referrer: settings?.referrer,
+      'baselineEnvironment': settings?.baselineEnvironment,
+      'referrer': settings?.referrer,
     }));
   }
 
