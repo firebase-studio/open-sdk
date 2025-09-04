@@ -28,7 +28,7 @@ img.src = FirebaseStudio.getButtonImageUrl({
 
 Example:
 
-<img src="https://cdn.firebasestudio.dev/btn/open_dark_32@2x.png" alt="Open in Firebase Studio button" height="32">
+[<img src="https://cdn.firebasestudio.dev/btn/open_dark_32@2x.png" alt="Open in Firebase Studio button" height="32">](https://studio.firebase.google.com/new/gemini)
 
 ### Deep-link URLs
 
