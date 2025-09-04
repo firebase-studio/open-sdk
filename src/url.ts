@@ -1,9 +1,15 @@
+/**
+ * A destination for a "Open in Firebase Studio" link.
+ */
 export type OpenDestination =
   | ImportGitOpenDestination
   | NamedTemplateOpenDestination
   | CustomTemplateOpenDestination
   | PrototypePromptOpenDestination;
 
+/**
+ * A destination that creates a new workspace by importing a Git repository.
+ */
 export interface ImportGitOpenDestination {
   type: 'git';
   /**
@@ -13,6 +19,9 @@ export interface ImportGitOpenDestination {
   repoUrl: string;
 }
 
+/**
+ * A destination that creates a new workspace from a named template.
+ */
 export interface NamedTemplateOpenDestination {
   type: 'named-template';
   /**
@@ -21,6 +30,9 @@ export interface NamedTemplateOpenDestination {
   templateId: string;
 }
 
+/**
+ * A destination that creates a new workspace from a custom template Git repository.
+ */
 export interface CustomTemplateOpenDestination {
   type: 'custom-template';
   /**
@@ -30,6 +42,9 @@ export interface CustomTemplateOpenDestination {
   templateRepoUrl: string;
 }
 
+/**
+ * A destination that creates a new prototyper workspace from a natural language prompt.
+ */
 export interface PrototypePromptOpenDestination {
   type: 'prototype-prompt';
   /**
@@ -38,8 +53,9 @@ export interface PrototypePromptOpenDestination {
   prompt: string;
 }
 
-// TODO: support adhoc workspaces somehow? they're not simple links though.
-
+/**
+ * Default base URL for "Open in Firebase Studio" links.
+ */
 const BASE_URL = 'https://studio.firebase.google.com';
 
 /**

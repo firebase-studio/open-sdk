@@ -1,9 +1,23 @@
-// Fork of https://github.com/stackblitz/sdk (MIT license)
+/**
+ * This file is forked from https://github.com/stackblitz/sdk (`src/generate.ts`)
+ *
+ * @copyright (c) 2018 Eric Simons and Albert Pai (original authors)
+ * @license MIT (original license)
+ */
 
+/**
+ * Default base URL for the adhoc workspaces API.
+ */
 const DEFAULT_BASE_URL = 'https://studio.firebase.google.com/run.api';
 
+/**
+ * Valid baseline environments (optional).
+ */
 export type BaselineEnvironment = 'flutter' | 'stitch' | 'html' | 'react' | 'angular' | 'python';
 
+/**
+ * The content and configuration for a new ad-hoc workspace.
+ */
 export interface AdhocWorkspaceContent {
   /**
    * A map of relative file paths (e.g. `src/foo.html`) to their contents (strings). Binary
@@ -25,6 +39,9 @@ export interface AdhocWorkspaceContent {
   }
 }
 
+/**
+ * Options for creating a new ad-hoc workspace.
+ */
 export interface AdhocWorkspaceOptions {
   /**
    * Override base URL for the API.

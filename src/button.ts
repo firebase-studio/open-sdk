@@ -6,6 +6,9 @@ export type ButtonHtmlColor = ButtonColor | 'dynamic' | 'dynamic-reverse';
 export type ButtonSize = 20 | 32;
 export type ButtonImageFormat = 'svg' | 'png';
 
+/**
+ * Configuration for an "Open in Firebase Studio" button.
+ */
 export interface ButtonImageConfig {
   /**
    * The text label to show in the button.
@@ -25,6 +28,9 @@ export interface ButtonImageConfig {
   imageFormat?: ButtonImageFormat;
 }
 
+/**
+ * Configuration for an "Open in Firebase Studio" button HTML snippet.
+ */
 export interface ButtonHtmlConfig extends Omit<ButtonImageConfig, 'color'> {
   destination: OpenDestination;
   color?: ButtonHtmlColor;
