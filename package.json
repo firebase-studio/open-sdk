@@ -9,6 +9,10 @@
     "idx",
     "project-idx"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firebase-studio/open-sdk"
+  },
   "author": "Google LLC",
   "license": "Apache-2.0",
   "main": "dist/index.cjs",
